@@ -1,1 +1,6 @@
-<p>home works!</p>
+<mat-card>Home
+    <mat-card-content *ngIf="content$ | async as data">
+            data
+    </mat-card-content>
+
+</mat-card>
