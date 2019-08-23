@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TokenResponse } from '../models/auth.model';
-import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,24 +7,18 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  loggedIn: boolean;
-
+  /** display email if logged in */
   @Input() email: string;
 
-  constructor(private authService: AuthService) {
-    this.loggedIn = false;
-   }
+  /** to display a list of validated emails */
+  @Input() bonus: boolean;
+
+  constructor() {}
 
   ngOnInit() {
   }
 
-  updateLoggedIn(loggedIn: boolean) {
-    this.loggedIn = loggedIn;
-    console.log("UPDATEDLOGGEDIN");
-    if(loggedIn) {
-      let a = this.authService.getDecodedToken();
-      console.log("######");
-      console.log(a);
-    }
+  navigateToBonus() {
+    //TODO
   }
 }

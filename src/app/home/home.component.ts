@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
-import { TokenResponse } from '../models/auth.model';
 
 @Component({
   selector: 'app-home',
@@ -24,10 +23,14 @@ export class HomeComponent implements OnInit {
   /** email used for the header */
   email: string; 
 
+  /** bonus button */
+  bonus: boolean;
+
   constructor(public homeService: HomeService,  private authService: AuthService) {
     this.showLoginRegisterBool = false;
     this.content$ = homeService.getContent();
     this.loggedIn = authService.checkUserIsLoggedIn();
+    this.bonus = false;
    }
 
   ngOnInit() {
@@ -35,18 +38,26 @@ export class HomeComponent implements OnInit {
       this.content = content;
     })
 
-    if(this.authService.getDecodedToken) 
-      this.email = this.authService.getDecodedToken()["sub"];
-  }
-
-  updateLoggedIn(loggedIn: boolean) {
-    this.loggedIn = loggedIn;
-    this.email = this.authService.getDecodedToken()["sub"];
+    if(this.authService.getDecodedToken())  
+      this.updateHeader();
     
   }
 
+  /** Called when a successful login occurs */
+  updateLoggedIn(loggedIn: boolean) {
+    this.loggedIn = loggedIn;
+    this.updateHeader();
+    
+  }
+
+  /** Show login and register options */
   showLoginRegister() {
     this.showLoginRegisterBool = true;
+  }
+
+  private updateHeader() {
+    this.email = this.authService.getDecodedToken()["sub"];
+    this.bonus = true;
   }
 
 }

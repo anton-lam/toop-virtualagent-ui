@@ -2,8 +2,11 @@
     <div class="title" fxFlex="row" fxLayoutAlign="center center" fxLayoutGap="1rem">
             <span>In Search For Lost Time</span>
     </div>
-    <div *ngIf="email">
+    <div *ngIf="email" class="standard">
         {{ email }}
     </div>
+    <button mat-flat-button 
+    color="primary" 
+    (click)="navigateToBonus()" [disabled]="!bonus">Bonus</button>
 </mat-toolbar>
     
