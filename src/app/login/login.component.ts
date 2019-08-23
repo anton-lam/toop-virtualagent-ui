@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   @Output() loggedIn = new EventEmitter<boolean>();
 
 
-  constructor(private fb: FormBuilder, private authService: AuthService) { 
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { 
     this.loginForm = this.fb.group(
       { email: [ '', Validators.required ], password: ['', Validators.required] }
     )
@@ -37,4 +38,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
+
+  navigateToRegister() {
+    this.router.navigate(['/register']);
+  }
 }

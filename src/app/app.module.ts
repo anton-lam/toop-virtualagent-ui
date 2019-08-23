@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from  '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import {MatCardModule, MatToolbarModule, MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import {MatCardModule, MatToolbarModule, MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSnackBarModule } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeService } from './home/home.service';
@@ -54,7 +54,8 @@ const  appRoutes:  Routes  = [
     MatInputModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatSnackBarModule
 
   ],
   providers: [HomeService, AuthService],
