@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
   /** Called when a successful login occurs */
   updateLoggedIn(loggedIn: boolean) {
     this.loggedIn = loggedIn;
+    this.content$ = this.homeService.getContent();
     this.updateHeader();
     
   }

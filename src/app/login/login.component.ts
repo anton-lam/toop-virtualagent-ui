@@ -2,26 +2,24 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
-import { TokenResponse } from '../models/auth.model';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   public loginForm: FormGroup;
 
   @Output() loggedIn = new EventEmitter<boolean>();
 
-
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { 
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { 
     this.loginForm = this.fb.group(
       { email: [ '', [Validators.required, Validators.email ]], password: ['', Validators.required] }
     )
   }
 
-  ngOnInit() {}
 
   onSubmit({ valid, value }) {
     if (valid) {
@@ -32,8 +30,9 @@ export class LoginComponent implements OnInit {
           this.loggedIn.emit(true);
         },
         err => {
-          //incorrect password, username
-          //TODO: do something
+          this._snackBar.open(err.error, 'error', {
+            duration: 3000
+          });
         }
     );
     }

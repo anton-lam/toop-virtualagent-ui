@@ -23,18 +23,22 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * submit form if valid, otherwise snackbar error
+   */
   onSubmit({ valid, value }) {
     if (valid) {
       this.authService.register(value).subscribe(
         res => {
-          this._snackBar.open('User Account Successfully Submitted', '', {
+          this._snackBar.open('Registration Application Successfully Submitted', '', {
             duration: 5000
           });
           this.registered = true;
-
         },
         err => {
-          //TODO: do something
+          this._snackBar.open(err.error, 'error', {
+            duration: 3000
+          });
         }
     );
     }
