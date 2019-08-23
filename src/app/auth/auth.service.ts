@@ -44,10 +44,18 @@ export class AuthService {
         return token ? this.decodeToken(token) : false;
     }
 
-    // Checks if the user is logged in
+    /**  Checks if the user is logged in by confirming JWT token */
     checkUserIsLoggedIn(): boolean {
         const token = this.getDecodedToken();
-        return token ? true : false;
+
+        if(!token) 
+            return false;
+
+        /** confirm issuer */
+        if(token["iss"] === "anton-lam") 
+            return true;
+         else 
+            return false;
     }
 
     //gets all users; should really move to users.service.ts
