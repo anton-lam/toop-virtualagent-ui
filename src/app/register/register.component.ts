@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar) { 
     this.registered = false;
     this.registerForm = this.fb.group(
-      { email: [ '', Validators.required ], password: ['', Validators.required], verifyPassword: ['', Validators.required] }
+      { email: [ '', [Validators.required, Validators.email ]], password: ['', Validators.required], verifyPassword: ['', Validators.required] }
     )
   }
 
