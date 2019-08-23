@@ -16,9 +16,7 @@ So far I have completed:
 * register + email verification feature with password and email validations 
 * partial content and full content display 
 * page not found landing page 
-* bonus content can be found when logging in, button top-right of the header (NOT DONE YET)
-
-
+* bonus content can be found when logging in, button top-right of the header, and shows a list of verified and unverified emails
 
 # testing
 
