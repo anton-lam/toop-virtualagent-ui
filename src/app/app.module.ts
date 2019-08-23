@@ -16,6 +16,8 @@ import { HomeService } from './home/home.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth/auth.service';
+import { RegisterComponent } from './register/register.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 const  appRoutes:  Routes  = [
   {
@@ -23,6 +25,7 @@ const  appRoutes:  Routes  = [
     component:  LoginComponent
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: '**', component: PageNotFoundComponent }
   ];
@@ -33,7 +36,8 @@ const  appRoutes:  Routes  = [
     LoginComponent,
     PageNotFoundComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    RegisterComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -49,7 +53,8 @@ const  appRoutes:  Routes  = [
     MatButtonModule,
     MatInputModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
 
   ],
   providers: [HomeService, AuthService],

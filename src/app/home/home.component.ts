@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
