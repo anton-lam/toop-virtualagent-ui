@@ -1,6 +1,13 @@
 <mat-card>
-    <div class="angular-with-newlines">
+    <div class="angular-with-newlines" *ngIf="content">
             {{content.text}}
     </div>
-    <button mat-flat-button color="accent">Read More</button>
+    <div *ngIf="!showLoginRegisterBool">
+            <button mat-flat-button 
+            color="accent" 
+            (click)="showLoginRegister()">Read More</button>
+    </div>
+    <div *ngIf="showLoginRegisterBool">
+        <app-login></app-login>
+    </div>
 </mat-card>

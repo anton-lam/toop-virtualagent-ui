@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +15,23 @@ export class HomeComponent implements OnInit {
 
   //content 
   content: String;
+  
+  /** boolean dictating whether to show login/register */
+  showLoginRegisterBool: boolean; 
 
   constructor(public homeService: HomeService) {
     this.content$ = homeService.getContent();
+    this.showLoginRegisterBool = false;
    }
 
   ngOnInit() {
     this.content$.subscribe(content => {
       this.content = content;
     })
+  }
+
+  showLoginRegister() {
+    this.showLoginRegisterBool = true;
   }
 
 }

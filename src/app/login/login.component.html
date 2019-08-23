@@ -1,8 +1,32 @@
-<mat-card>
-        <mat-card-header>
-            <mat-card-title>Login</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-        <!-- The form goes here -->
-        </mat-card-content>
-</mat-card>
+<hr>
+
+<h2 class="mat-h2"> Want to keep reading? Register here </h2>
+<button mat-flat-button color="accent">Register</button>
+
+<h2 class="mat-h2"> Already have an account? Sign in below</h2>   
+
+<form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit(loginForm)"
+>
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+            matInput
+            type="email"
+            formControlName="email"
+            required
+        />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="primary">
+        <mat-label>Password</mat-label>
+        <input
+            matInput
+            type="password"
+            formControlName="password"
+            required
+        />
+    </mat-form-field>
+
+</form>
