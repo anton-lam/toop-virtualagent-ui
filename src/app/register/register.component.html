@@ -37,10 +37,12 @@
             </form>
         </div>
         <div *ngIf="registered">
-            <h3>Please verify your email before attempting to login</h3>
+            <h3 class="mat-h3">Please verify your email before attempting to login</h3>
             <button mat-flat-button 
             color="accent" 
             (click)="navigateToHome()">Back</button>
+            <button mat-flat-button 
+            (click)="navigateToHome()">Click here to resend email</button>
         </div>
     </mat-card-content>
 </mat-card>

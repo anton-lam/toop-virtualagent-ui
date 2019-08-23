@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
   registered: boolean;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar) { 
+  constructor(private fb: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar, private router: Router) { 
     this.registered = false;
     this.registerForm = this.fb.group(
       { email: [ '', [Validators.required, Validators.email ]], password: ['', Validators.required], verifyPassword: ['', Validators.required] }
@@ -36,6 +37,10 @@ export class RegisterComponent implements OnInit {
         }
     );
     }
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/home']);
   }
 
 }
