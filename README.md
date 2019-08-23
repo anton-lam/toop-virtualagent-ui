@@ -27,7 +27,9 @@ Test suites written in the other [repo](https://github.com/anton-lam/toop-virtua
 
 # Troubleshooting
 
-There is already a default user with the 
+No logout API endpoint yet, so if you want to logout remove the JWT token from your browser. 
+
+If needed, there is already a default user with the 
 ```
 email: abc@gmail.com, password: password
 ``` 
