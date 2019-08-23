@@ -5,10 +5,12 @@ import * as jwtDecode from 'jwt-decode';
 import { environment } from 'src/environments/environment';
 import { TokenResponse, LoginCredentials, RegisterCredentials } from '../models/auth.model';
 import { LocalStorageService } from '../storage/local-storage.service';
+import { User } from '../models/user.model';
 
 @Injectable()
 export class AuthService {
     private registerUrl = 'register';
+    private allEmailsUrl = 'emails';
     private storageKey = 'access_token';
     
     constructor(private http: HttpClient, private localStorage: LocalStorageService) {}
@@ -46,5 +48,10 @@ export class AuthService {
     checkUserIsLoggedIn(): boolean {
         const token = this.getDecodedToken();
         return token ? true : false;
+    }
+
+    //gets all users; should really move to users.service.ts
+    getAllUsers(): Observable<User[]> {
+        return this.http.get<any>(`${environment.serverUrl}/${this.allEmailsUrl}`);
     }
 }

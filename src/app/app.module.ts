@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from  '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import {MatCardModule, MatToolbarModule, MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSnackBarModule } from '@angular/material';
+import {MatCardModule, MatToolbarModule, MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatListModule } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeService } from './home/home.service';
@@ -19,6 +19,7 @@ import { AuthService } from './auth/auth.service';
 import { RegisterComponent } from './register/register.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { BonusComponent } from './bonus/bonus.component';
 
 const  appRoutes:  Routes  = [
   {
@@ -28,6 +29,7 @@ const  appRoutes:  Routes  = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'bonus', component: BonusComponent },
   { path: '**', component: PageNotFoundComponent }
   ];
 
@@ -38,7 +40,8 @@ const  appRoutes:  Routes  = [
     PageNotFoundComponent,
     HomeComponent,
     HeaderComponent,
-    RegisterComponent
+    RegisterComponent,
+    BonusComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -53,6 +56,7 @@ const  appRoutes:  Routes  = [
     MatToolbarModule,
     MatButtonModule,
     MatInputModule,
+    MatListModule,
     HttpClientModule,
     ReactiveFormsModule,
     FlexLayoutModule,
