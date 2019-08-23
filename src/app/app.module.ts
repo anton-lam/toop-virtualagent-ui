@@ -22,10 +22,8 @@ const  appRoutes:  Routes  = [
     path: 'login',
     component:  LoginComponent
   },
-  { path: '',
-    component: HomeComponent,
-    pathMatch: 'full'
-  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: '**', component: PageNotFoundComponent }
   ];
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import * as jwtDecode from 'jwt-decode';
 import { environment } from 'src/environments/environment';
 import { TokenResponse, LoginCredentials, RegisterCredentials } from '../models/auth.model';
 import { LocalStorageService } from '../storage/local-storage.service';
@@ -22,13 +23,28 @@ export class AuthService {
 
     setAuthorizationToken(token: string): void {
         this.localStorage.setItem(this.storageKey, token);
-      }
+    }
     
-      getAuthorizationToken(): string {
+    getAuthorizationToken(): string {
         return this.localStorage.getItem(this.storageKey);
-      }
+    }
     
-      removeAuthorizationToken(): void {
+    removeAuthorizationToken(): void {
         this.localStorage.removeItem(this.storageKey);
-      }
+    }
+
+    decodeToken(token: string): Object {
+        return jwtDecode(token);
+    }
+    
+    getDecodedToken(): Object | false {
+        const token = this.getAuthorizationToken();
+        return token ? this.decodeToken(token) : false;
+    }
+
+    // Checks if the user is logged in
+    checkUserIsLoggedIn(): boolean {
+        const token = this.getDecodedToken();
+        return token ? true : false;
+    }
 }

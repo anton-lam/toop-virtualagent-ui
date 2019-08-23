@@ -2,12 +2,15 @@
     <div class="angular-with-newlines" *ngIf="content">
             {{content.text}}
     </div>
-    <div *ngIf="!showLoginRegisterBool">
-            <button mat-flat-button 
-            color="accent" 
-            (click)="showLoginRegister()">Read More</button>
-    </div>
-    <div *ngIf="showLoginRegisterBool">
-        <app-login></app-login>
+
+    <div *ngIf="!loggedIn">
+            <div *ngIf="!showLoginRegisterBool">
+                    <button mat-flat-button 
+                    color="accent" 
+                    (click)="showLoginRegister()">Read More</button>
+            </div>
+            <div *ngIf="showLoginRegisterBool">
+                <app-login (loggedIn)="updateLoggedIn($event)"></app-login>
+            </div>
     </div>
 </mat-card>
