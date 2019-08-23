@@ -13,11 +13,12 @@ import {MatCardModule, MatToolbarModule, MatIconModule, MatButtonModule, MatForm
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeService } from './home/home.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth/auth.service';
 import { RegisterComponent } from './register/register.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 const  appRoutes:  Routes  = [
   {
@@ -58,7 +59,7 @@ const  appRoutes:  Routes  = [
     MatSnackBarModule
 
   ],
-  providers: [HomeService, AuthService],
+  providers: [HomeService, AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
