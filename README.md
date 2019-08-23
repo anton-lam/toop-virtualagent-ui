@@ -2,6 +2,8 @@
 
 Ui component of the toop-virtualagent for an interview. Needs to be run in conjunction with the [toop-virtualagent server](https://github.com/anton-lam/toop-virtualagent).
 
+Requirements: Current node.js which can be downloaded [here](https://nodejs.org/en/download/current/).
+
 Quick set up would be to run the following commands: 
 1. navigate to this directory
 1. npm i
