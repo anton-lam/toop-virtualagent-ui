@@ -9,14 +9,20 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
+  //observable content
   content$: Observable<any>;
 
+  //content 
+  content: String;
+
   constructor(public homeService: HomeService) {
-      
-    
+    this.content$ = homeService.getContent();
    }
 
   ngOnInit() {
+    this.content$.subscribe(content => {
+      this.content = content;
+    })
   }
 
 }

@@ -1,6 +1,6 @@
-<mat-card>Home
-    <mat-card-content *ngIf="content$ | async as data">
-            data
-    </mat-card-content>
-
+<mat-card>
+    <div class="angular-with-newlines">
+            {{content.text}}
+    </div>
+    <button mat-flat-button color="accent">Read More</button>
 </mat-card>
