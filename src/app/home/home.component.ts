@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HomeService } from './home.service';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { TokenResponse } from '../models/auth.model';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +10,6 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-
 
   /** Passage from Guermantes Way by Proust */
   content: String;
@@ -22,7 +21,10 @@ export class HomeComponent implements OnInit {
   /** boolean dictating whether to show login/register */
   showLoginRegisterBool: boolean; 
 
-  constructor(public homeService: HomeService, authService: AuthService) {
+  /** email used for the header */
+  email: string; 
+
+  constructor(public homeService: HomeService,  private authService: AuthService) {
     this.showLoginRegisterBool = false;
     this.content$ = homeService.getContent();
     this.loggedIn = authService.checkUserIsLoggedIn();
@@ -32,10 +34,15 @@ export class HomeComponent implements OnInit {
     this.content$.subscribe(content => {
       this.content = content;
     })
+
+    if(this.authService.getDecodedToken) 
+      this.email = this.authService.getDecodedToken()["sub"];
   }
 
   updateLoggedIn(loggedIn: boolean) {
     this.loggedIn = loggedIn;
+    this.email = this.authService.getDecodedToken()["sub"];
+    
   }
 
   showLoginRegister() {
