@@ -26,29 +26,40 @@ export class HomeComponent implements OnInit {
   /** bonus button */
   bonus: boolean;
 
+  /**
+   * On first load checks if user is logged in
+   * Also obtain the content 
+   * 
+   * @param homeService 
+   * @param authService 
+   */
   constructor(public homeService: HomeService,  private authService: AuthService) {
     this.showLoginRegisterBool = false;
-    this.content$ = homeService.getContent();
     this.loggedIn = authService.checkUserIsLoggedIn();
     this.bonus = false;
    }
 
+  /**
+   * Subscribe to the content observable
+   */
   ngOnInit() {
-    this.content$.subscribe(content => {
-      this.content = content;
-    })
-
-    if(this.authService.getDecodedToken())  
+    this.refreshContent();
+    if(this.loggedIn)  
       this.updateHeader();
-    
   }
 
   /** Called when a successful login occurs */
   updateLoggedIn(loggedIn: boolean) {
     this.loggedIn = loggedIn;
-    this.content$ = this.homeService.getContent();
+    this.refreshContent();
     this.updateHeader();
-    
+  }
+
+  refreshContent() {
+    this.content$ = this.homeService.getContent();
+    this.content$.subscribe(content => {
+      this.content = content;
+    });
   }
 
   /** Show login and register options */
