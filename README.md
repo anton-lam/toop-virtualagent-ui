@@ -6,11 +6,11 @@ Requirements: Current node.js which can be downloaded [here](https://nodejs.org/
 
 Quick set up would be to run the following commands: 
 1. navigate to this directory
-3. npm i
-4. npm install -g @angular/cli@latest
-5. make sure the api is running on localhost:3000
-6. ng serve 
-7. navigate to the website at http://localhost:4200 or http://localhost:4200/home
+2. npm i
+3. npm install -g @angular/cli@latest
+4. make sure the api is running on localhost:3000
+5. ng serve 
+6. navigate to the website at http://localhost:4200 or http://localhost:4200/home
 
 # Features
 
