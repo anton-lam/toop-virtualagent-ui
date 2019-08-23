@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(value).subscribe(
         res => {
           //success! add token and refresh the entire page 
+          this.authService.setAuthorizationToken(res.token);
         },
         err => {
           //incorrect password, username
