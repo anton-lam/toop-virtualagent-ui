@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeService } from './home/home.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './auth/auth.service';
 
 const  appRoutes:  Routes  = [
   {
@@ -53,7 +54,7 @@ const  appRoutes:  Routes  = [
     ReactiveFormsModule
 
   ],
-  providers: [HomeService],
+  providers: [HomeService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
