@@ -1,18 +1,20 @@
-<app-header  [email]="email" [bonus]="bonus" ></app-header>
+<app-header [email]="email" [bonus]="bonus" ></app-header>
 <mat-card>
-    <h2 class="toop-h2">Guermantes Way, Marcel Proust</h2>    
-    <div class="angular-with-newlines" *ngIf="content">
-            {{content.text}}
-    </div>
+    <div style="padding-left:2em">
+        <h2 class="toop-h2">Guermantes Way, Marcel Proust</h2>    
+        <div class="angular-with-newlines" *ngIf="content">
+                {{content.text}}
+        </div>
 
-    <div *ngIf="!loggedIn" class="standard">
-            <div *ngIf="!showLoginRegisterBool">
-                    <button mat-flat-button 
-                    color="accent" 
-                    (click)="showLoginRegister()">Read More</button>
-            </div>
-            <div *ngIf="showLoginRegisterBool">
-                <app-login (loggedIn)="updateLoggedIn($event)"></app-login>
-            </div>
-    </div>
+        <div *ngIf="!loggedIn" class="standard">
+                <div *ngIf="!showLoginRegisterBool">
+                        <button mat-flat-button 
+                        color="warn" 
+                        (click)="showLoginRegister()">Read More</button>
+                </div>
+                <div *ngIf="showLoginRegisterBool">
+                        <app-login (loggedIn)="updateLoggedIn($event)"></app-login>
+                </div>
+        </div>
+    </div>    
 </mat-card>

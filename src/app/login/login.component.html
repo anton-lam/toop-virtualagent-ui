@@ -1,9 +1,8 @@
 <hr>
 
-<h2 class="mat-h2"> Want to keep reading? Register here </h2>
-<button mat-flat-button color="accent" (click)="navigateToRegister()">Register</button>
-<br><br>
-<h2 class="mat-h2"> Already have an account? Sign in below</h2>   
+<h2 class="details"> Want to keep reading? Register here. </h2>
+<button mat-flat-button color="warn" (click)="navigateToRegister()">Register</button>
+<h2 class="details"> Already have an account? Sign in below.</h2>   
 
 <form
     [formGroup]="loginForm"
@@ -30,6 +29,6 @@
     </mat-form-field>
    
 
-    <button class="button" type="submit" mat-raised-button [disabled]="!loginForm.valid">Submit</button>
+    <button type="submit" mat-stroked-button [disabled]="!loginForm.valid">Submit</button>
 
 </form>
