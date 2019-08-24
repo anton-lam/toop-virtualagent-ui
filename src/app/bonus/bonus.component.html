@@ -1,6 +1,6 @@
 <app-header  [email]="email" [bonus]="bonus" ></app-header>
 <mat-card>
-    <h1 class="mat-h1">Validated Emails</h1>    
+    <h2 class="toop-h2">Validated Emails</h2> 
     <mat-list>
         <mat-list-item *ngFor="let user of users">
           <h3 matLine> {{user.email}} </h3>
@@ -10,7 +10,7 @@
           </p>
         </mat-list-item>
       </mat-list>
-
+      <br>
       <button mat-flat-button 
       color="accent" 
       (click)="navigateToHome()">Back</button>

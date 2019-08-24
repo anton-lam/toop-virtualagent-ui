@@ -13,7 +13,7 @@ $anton-lam-primary: mat-palette($mat-grey, 300);
 $anton-lam-accent:  mat-palette($mat-grey, 600);
 
 // The warn palette is optional (defaults to red).
-$candy-app-warn:    mat-palette($mat-teal, A200);
+$candy-app-warn:    mat-palette($mat-teal, 500);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $anton-lam-theme: mat-light-theme($anton-lam-primary, $anton-lam-accent, $candy-app-warn);
